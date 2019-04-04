@@ -1,5 +1,6 @@
 package com.homedepot.bb.examples;
 
+import com.homedepot.bb.ModelAndView;
 import com.homedepot.bb.annotations.AutoWired;
 import com.homedepot.bb.annotations.Controller;
 import com.homedepot.bb.annotations.RequestMapping;
@@ -19,8 +20,10 @@ public class ExampleController {
     private ExampleBean exampleBean;
 
     @RequestMapping(path = "/ec")
-    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.getWriter().println("WOOT!");
+    public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        return new ModelAndView(exampleBean, "example.html");
+
     }
 
 }

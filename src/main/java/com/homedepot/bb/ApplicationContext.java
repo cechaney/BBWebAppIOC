@@ -1,6 +1,8 @@
 package com.homedepot.bb;
 
+import com.homedepot.bb.annotations.AutoWired;
 import com.homedepot.bb.annotations.RequestMapping;
+import com.homedepot.bb.annotations.Value;
 import com.homedepot.bb.util.ControllerMapping;
 import org.reflections.Reflections;
 import org.w3c.dom.Document;
@@ -13,6 +15,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.logging.Level;
@@ -128,6 +131,34 @@ public class ApplicationContext {
             try {
 
                 Object instance = clazz.newInstance();
+
+                List<Field> fields = Arrays.asList(instance.getClass().getFields());
+
+                for(Field field : fields){
+
+                    if(field.isAnnotationPresent(Value.class)){
+
+                        Value anno = field.getAnnotation(Value.class);
+
+                        String appPropName = anno.value();
+
+                        field.setAccessible(true);
+                        field.set(instance, appProps.get(appPropName));
+
+                    }
+
+                    if(field.isAnnotationPresent(AutoWired.class)){
+
+                        AutoWired anno = field.getAnnotation(AutoWired.class);
+
+                        String beanName = anno.value();
+
+                        field.setAccessible(true);
+                        field.set(instance, beanMap.get(beanName));
+
+                    }
+
+                }
 
                 List<Method> methods = Arrays.asList(instance.getClass().getMethods());
 
