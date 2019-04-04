@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BBWebApp:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>BBWebApp</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="BBWebApp.war">
+      <element id="artifact" artifact-name="BBWebApp:war exploded" />
+    </root>
+  </artifact>
+</component>

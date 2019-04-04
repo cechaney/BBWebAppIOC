@@ -1,5 +1,8 @@
 package com.homedepot.bb;
 
+import com.homedepot.bb.annotations.RequestMapping;
+import com.homedepot.bb.util.ControllerMapping;
+import org.reflections.Reflections;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
@@ -10,9 +13,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.lang.reflect.Method;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,14 +28,17 @@ public class ApplicationContext {
 
     public static final String APP_CONTEXT_KEY = "APP_CONTEXT";
 
-    private Map<String, Object> beanMap = new HashMap<>();
     private Properties appProps = new Properties();
+    private Map<String, Object> beanMap = new HashMap<>();
+    private Map<String, ControllerMapping> controllerMap = new HashMap<>();
 
     public ApplicationContext(){
 
         loadAppProperties(APP_PROPS_FILENAME);
 
-        loadBeans(BEANS_XML);
+        loadXmlBeans(BEANS_XML);
+
+        loadControllers();
 
     }
 
@@ -53,7 +58,7 @@ public class ApplicationContext {
 
     }
 
-    private void loadBeans(String beansFile){
+    private void loadXmlBeans(String beansFile){
 
         InputStream beansStream = ApplicationContext.class.getClassLoader().getResourceAsStream(beansFile);
 
@@ -106,7 +111,57 @@ public class ApplicationContext {
 
     }
 
-    private void scanForControllers(){
+    private void loadControllers(){
+
+        String controllerClasspath = appProps.getProperty("controllerRootPackage");
+
+        Reflections reflections = new Reflections(controllerClasspath);
+
+        Set<Class<?>> controllers = reflections.getTypesAnnotatedWith(
+                com.homedepot.bb.annotations.Controller.class
+        );
+
+        for(Class clazz : controllers){
+
+            LOGGER.log(Level.INFO, clazz.getName());
+
+            try {
+
+                Object instance = clazz.newInstance();
+
+                List<Method> methods = Arrays.asList(instance.getClass().getMethods());
+
+                for(Method method : methods){
+
+                    if(method.isAnnotationPresent(RequestMapping.class)){
+
+                        RequestMapping anno = method.getAnnotation(RequestMapping.class);
+
+                        String path = anno.path();
+                        ControllerMapping mapping = new ControllerMapping(instance, method);
+
+                        controllerMap.put(
+                                path,
+                                mapping
+                        );
+
+                        LOGGER.log(
+                                Level.INFO,
+                                "Added " +
+                                        path +
+                                        " mapping for " +
+                                        clazz.getName() +
+                                        "." +
+                                        method.getName()
+                        );
+                    }
+                }
+
+            } catch (InstantiationException | IllegalAccessException e) {
+                LOGGER.log(Level.SEVERE, "Unable to create instance of " + clazz.getName());
+            }
+
+        }
 
     }
 
@@ -116,5 +171,9 @@ public class ApplicationContext {
 
     public Map<String, Object> getBeanMap() {
         return beanMap;
+    }
+
+    public Map<String, ControllerMapping> getControllerMap() {
+        return controllerMap;
     }
 }
