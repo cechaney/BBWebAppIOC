@@ -1,14 +1,62 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <title>Brown Bag Webapp </title>
-    </head>
-    <body>
-    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-12 px-0">
-            <h1 class="display-4 font-italic">Hi {{firstName}}!  I'm a page rendered by a Mustache template.</h1>
+<head>
+
+    <title>Brown Bag Webapp </title>
+
+    <link href="../styles/simple-grid.min.css" rel="stylesheet"/>
+
+    <style>
+        body {
+
+        }
+        #jspIcon{
+            width: 128px;
+            height: 128px;
+        }
+        .jumbotron{
+            color: white;
+            background: rgb(0,0,0);
+            background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(152,152,152,1) 100%);
+            padding-top: 16px;
+        }
+        .jumbotron h1, h2, h3 {
+            color: white
+        }
+    </style>
+</head>
+<body>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 center">
+                <div class="font-light"><img id="jspIcon" src="../images/spring.png"/><img id="jspIcon" src="../images/mustache.png"/></div>
+                <div style="color: white; font-size: 3.5em">IOC, MVC, Templates</div>
+                <h2 class="font-light">Modern Java Web apps</h2>
+            </div>
         </div>
     </div>
-    </body>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <li>
+                    <p class="lead">Spring's Application and WebApplication contexts provide the IOC pattern</p>
+                </li>
+                <li>
+                    <p class="lead">Spring MVC's ContextLoaderListener and Dispatcher servlet provide the MVC pattern</p>
+                </li>
+                <li>
+                    <p class="lead">JSP, Mustache, Velocity, etc provide the templates</p>
+                </li>
+            </ul>
+            <hr/>
+            <div>
+                <c:set var="now" value="<%=new java.util.Date()%>"/>
+                <b>Hi {{firstName}}!</b>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

@@ -3,35 +3,57 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
         <title>Brown Bag Webapp </title>
+
+        <link href="styles/simple-grid.min.css" rel="stylesheet"/>
+
         <style>
             body {
-                margin-top: 50px;
+
+            }
+            #jspIcon{
+                width: 128px;
+                height: 128px;
+            }
+            .jumbotron{
+                color: white;
+                background: rgb(0,0,0);
+                background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(152,152,152,1) 100%);
+                padding-top: 16px;
+            }
+            .jumbotron h1, h2, h3 {
+                color: white
             }
         </style>
     </head>
     <body>
-        <div class="container text-black rounded ">
-            <div class="row justify-content-start">
-                <div class="col-5">
-                    <img src="images/jsp.png"/>
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 center">
+                        <div class="font-light"><img id="jspIcon" src="images/jsp.png"></div>
+                        <div style="color: white; font-size: 3.5em">Java Server Pages</div>
+                        <h2 class="font-light">JSP is a templating system for Java web applications</h2>
+                    </div>
                 </div>
-                <div class="col-7">
-                    <h1 class="display-4 font-italic">Hi!  I'm a Java Server Page.</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
                     <ul>
                         <li>
-                            <p class="lead">People used to build powerful apps with me, but eventually Spring killed me off in favor "simple" template frameworks.</p>
+                            <p class="lead">Devs used to build powerful apps with JSP. These days there's a perference for "simple" template frameworks like Mustache.</p>
                         </li>
                         <li>
-                            <p class="lead">The biggest complaint about me was that I encouraged the mixing of code and markup.  Designers couldn't see their design through all of the code snippets.</p>
+                            <p class="lead">The biggest complaint about JSP was that it encouraged the mixing of code and markup.  Designers couldn't see their design through all of the code snippets.</p>
                         </li>
                         <li>
-                            <p class="lead">But I guess what's old is new again.  You're probably mixing code and markup together in your React.js app.</p>
+                            <p class="lead">What's old is new again.  You're probably mixing code and markup together in your React.js app. >:P</p>
                         </li>
                         <li>
-                            <p class="lead">Like whipper-snapper Vue.js people used lots of custom tags to use inside my modules.  Here's a sample.</p>
+                            <p class="lead">Custom JSP tags libraries were popular as well.  The date at the bottom of the page is a Date Format tag.</p>
                         </li>
                     </ul>
                     <hr/>
