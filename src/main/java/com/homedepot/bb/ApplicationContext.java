@@ -5,9 +5,7 @@ import com.homedepot.bb.annotations.RequestMapping;
 import com.homedepot.bb.annotations.Value;
 import com.homedepot.bb.util.ControllerMapping;
 import org.reflections.Reflections;
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -16,6 +14,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.logging.Level;
@@ -73,16 +72,18 @@ public class ApplicationContext {
                 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
                 Document doc = dBuilder.parse(beansStream);
 
-                NodeList nList = doc.getElementsByTagName(BEAN_NODE);
+                NodeList beanList = doc.getElementsByTagName(BEAN_NODE);
 
-                int nListLength = nList.getLength();
+                int beanListLength = beanList.getLength();
 
-                for( int i = 0; i < nListLength; i++){
+                for( int beanIndex = 0; beanIndex < beanListLength; beanIndex++){
 
-                    NamedNodeMap attrs = nList.item(i).getAttributes();
+                    Node bean = beanList.item(beanIndex);
 
-                    String id = attrs.getNamedItem("id").getNodeValue();
-                    String className = attrs.getNamedItem("class").getNodeValue();
+                    NamedNodeMap beanAttrs = bean.getAttributes();
+
+                    String id = beanAttrs.getNamedItem("id").getNodeValue();
+                    String className = beanAttrs.getNamedItem("class").getNodeValue();
 
                     LOGGER.log(
                             Level.INFO,
@@ -92,12 +93,50 @@ public class ApplicationContext {
                                     + className
                     );
 
+                    Element beanElement = (Element) bean;
+
+                    NodeList propList = beanElement.getElementsByTagName("property");
+
+                    int propListLength = propList.getLength();
+
+                    Map<String, String> propMap = new HashMap<>();
+
+                    for( int propIndex = 0; propIndex < propListLength; propIndex++){
+
+                        NamedNodeMap propAttrs = propList.item(propIndex).getAttributes();
+
+                        String name = propAttrs.getNamedItem("name").getNodeValue();
+                        String value = propAttrs.getNamedItem("value").getNodeValue();
+
+                        propMap.put(name, value);
+                    }
+
                     try {
 
-                        beanMap.put(id, Class.forName(className).newInstance());
+                        Class clazz = Class.forName(className);
 
-                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+                        Object instance = clazz.getDeclaredConstructor().newInstance();
+
+                        List<Field> fields = Arrays.asList(instance.getClass().getDeclaredFields());
+
+                        for(Field field : fields) {
+
+                            field.setAccessible(true);
+                            field.set(instance, propMap.get(field.getName()));
+
+                        }
+
+
+                        beanMap.put(id, instance);
+
+                    } catch (ClassNotFoundException |
+                            InstantiationException |
+                            IllegalAccessException |
+                            NoSuchMethodException |
+                            InvocationTargetException e) {
+
                         LOGGER.log(Level.SEVERE, "Failed to load bean: " + id, e);
+
                     }
 
                 }
@@ -130,9 +169,9 @@ public class ApplicationContext {
 
             try {
 
-                Object instance = clazz.newInstance();
+                Object instance = clazz.getDeclaredConstructor().newInstance();
 
-                List<Field> fields = Arrays.asList(instance.getClass().getFields());
+                List<Field> fields = Arrays.asList(instance.getClass().getDeclaredFields());
 
                 for(Field field : fields){
 
@@ -160,7 +199,7 @@ public class ApplicationContext {
 
                 }
 
-                List<Method> methods = Arrays.asList(instance.getClass().getMethods());
+                List<Method> methods = Arrays.asList(instance.getClass().getDeclaredMethods());
 
                 for(Method method : methods){
 
@@ -188,7 +227,7 @@ public class ApplicationContext {
                     }
                 }
 
-            } catch (InstantiationException | IllegalAccessException e) {
+            } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                 LOGGER.log(Level.SEVERE, "Unable to create instance of " + clazz.getName());
             }
 

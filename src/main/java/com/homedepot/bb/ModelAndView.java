@@ -3,19 +3,19 @@ package com.homedepot.bb;
 public class ModelAndView {
 
     private Object model;
-    private String view;
+    private String viewName;
 
     public ModelAndView(Object model, String view){
         this.model = model;
-        this.view = view;
+        this.viewName = view;
     }
 
     public Object getModel() {
         return model;
     }
 
-    public String getView() {
-        return view;
+    public String getViewName() {
+        return viewName;
     }
 
 }

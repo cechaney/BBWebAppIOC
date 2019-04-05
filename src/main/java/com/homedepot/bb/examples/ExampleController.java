@@ -19,7 +19,7 @@ public class ExampleController {
     @AutoWired("ExampleBean")
     private ExampleBean exampleBean;
 
-    @RequestMapping(path = "/ec")
+    @RequestMapping(path = "/example")
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         return new ModelAndView(exampleBean, "example.html");

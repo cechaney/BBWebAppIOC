@@ -2,7 +2,9 @@
 
 <beans>
     <bean id="ExampleBean" class="com.homedepot.bb.examples.ExampleBean">
-        <property name="firstName" value="Chris"/>
+        <property name="firstName" value="everybody"></property>
+    </bean>
+    <bean id="ChrisBean" class="com.homedepot.bb.examples.ExampleBean">
+        <property name="firstName" value="Chris"></property>
     </bean>
 </beans>
-

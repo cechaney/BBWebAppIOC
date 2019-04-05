@@ -17,6 +17,8 @@ public class DispatcherServlet extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(DispatcherServlet.class.getName());
 
+    private static final String RESOURCE_DIR = "/templates/";
+
     private ApplicationContext context;
     private Map<String, ControllerMapping> controllerMap;
 
@@ -46,7 +48,20 @@ public class DispatcherServlet extends HttpServlet {
             if(instance != null && method != null){
 
                 try {
-                    method.invoke(instance, request, response);
+
+                    ModelAndView mav = (ModelAndView) method.invoke(instance, request, response);
+
+                    View view = new View(RESOURCE_DIR + mav.getViewName());
+
+                    if(view != null){
+
+                        view.render(response, mav.getModel());
+
+                    } else {
+                        LOGGER.log(Level.INFO, "View - " + mav.getViewName() + " - was not resolved");
+                    }
+
+
                 } catch (IllegalAccessException | InvocationTargetException e) {
                     LOGGER.log(Level.SEVERE, "Unable to invoke controller method", e);
                 }
@@ -54,6 +69,12 @@ public class DispatcherServlet extends HttpServlet {
             }
 
         }
+
+    }
+
+    private void render(ModelAndView mav, HttpServletRequest request, HttpServletResponse response){
+
+
 
     }
 }
