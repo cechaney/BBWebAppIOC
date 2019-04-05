@@ -22,7 +22,7 @@
                 background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(152,152,152,1) 100%);
                 padding-top: 16px;
             }
-            .jumbotron h1, h2, h3 {
+            .jumbotron h2 {
                 color: white
             }
         </style>
@@ -56,8 +56,17 @@
                             <p class="lead">Custom JSP tags libraries were popular as well.  The date at the bottom of the page is a Date Format tag.</p>
                         </li>
                     </ul>
+                    <div class="col-4 center">
+                        <a href="./example">Servlets</a>
+                    </div>
+                    <div class="col-4 center">
+                        <a href="./mvc/example">MVC</a>
+                    </div>
+                    <div class="col-4 center">
+                        <a href="./history.jsp">Spring History</a>
+                    </div>
                     <hr/>
-                    <div>
+                    <div class="right">
                         <c:set var="now" value="<%=new java.util.Date()%>"/>
                         <b>The current date is:</b> <fmt:formatDate value="${now}"/>
                     </div>
