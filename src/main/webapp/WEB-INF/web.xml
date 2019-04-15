@@ -20,15 +20,15 @@
 
   <servlet-mapping>
     <servlet-name>ExampleServlet</servlet-name>
-    <url-pattern>/example</url-pattern>
+    <url-pattern>/servlet</url-pattern>
   </servlet-mapping>
 
   <filter>
     <filter-name>ExampleFilter</filter-name>
     <filter-class>com.homedepot.bb.examples.ExampleFilter</filter-class>
     <init-param>
-      <param-name>DateCookieName</param-name>
-      <param-value>CURRENT_TIME</param-value>
+      <param-name>FilterInitParamName</param-name>
+      <param-value>SomeValue</param-value>
     </init-param>
   </filter>
 

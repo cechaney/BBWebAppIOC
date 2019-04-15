@@ -29,6 +29,8 @@ public class ExampleFilter implements Filter {
 
     public void init(FilterConfig config) throws ServletException {
 
+        LOGGER.log(Level.INFO, config.getInitParameter("FilterInitParamName"));
+
     }
 
 }

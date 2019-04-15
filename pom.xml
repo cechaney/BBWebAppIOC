@@ -96,6 +96,9 @@
               <configuration>
                   <source>8</source>
                   <target>8</target>
+                  <compilerArgs>
+                    <compilerArg>-parameters</compilerArg>
+                  </compilerArgs>
               </configuration>
           </plugin>
       </plugins>

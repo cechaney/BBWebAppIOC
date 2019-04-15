@@ -72,9 +72,4 @@ public class DispatcherServlet extends HttpServlet {
 
     }
 
-    private void render(ModelAndView mav, HttpServletRequest request, HttpServletResponse response){
-
-
-
-    }
 }

@@ -11,11 +11,10 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.beans.ConstructorProperties;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,7 +39,9 @@ public class ApplicationContext {
 
         loadXmlBeans(BEANS_XML);
 
-        loadControllers();
+        String controllerClasspath = appProps.getProperty("controllerRootPackage");
+
+        loadControllers(controllerClasspath);
 
     }
 
@@ -153,9 +154,7 @@ public class ApplicationContext {
 
     }
 
-    private void loadControllers(){
-
-        String controllerClasspath = appProps.getProperty("controllerRootPackage");
+    private void loadControllers(String controllerClasspath){
 
         Reflections reflections = new Reflections(controllerClasspath);
 
@@ -167,9 +166,59 @@ public class ApplicationContext {
 
             LOGGER.log(Level.INFO, clazz.getName());
 
+            Object instance = null;
+
             try {
 
-                Object instance = clazz.getDeclaredConstructor().newInstance();
+                List<Constructor> constructors = Arrays.asList(clazz.getDeclaredConstructors());
+
+                for(Constructor construct : constructors){
+
+                    if(construct.isAnnotationPresent(AutoWired.class)){
+
+                        if(construct.isAnnotationPresent(ConstructorProperties.class)){
+                            ConstructorProperties cprop =
+                                    (ConstructorProperties)construct
+                                            .getAnnotation(ConstructorProperties.class);
+
+                            List<String> paramNames = Arrays.asList(cprop.value());
+                            List<Object> paramValues = new ArrayList<>();
+                            List<Class> argsList = new ArrayList<>();
+
+                            for (String paramName : paramNames){
+
+                                Object paramValue = this.appProps.get(paramName);
+
+                                if(paramValue == null){
+                                    paramValue = this.beanMap.get(paramName);
+                                }
+
+                                if(paramValue != null){
+                                    paramValues.add(paramValue);
+                                    argsList.add(paramValue.getClass());
+                                }
+
+
+                            }
+
+                            Object[] params = paramValues.toArray();
+
+                            Class[] args = new Class[params.length];
+
+                            for (int i = 0; i < params.length; i++){
+                                args[i] = params[i].getClass();
+                            }
+
+                            instance = clazz.getDeclaredConstructor(args).newInstance(params);
+
+                        }
+
+                    }
+                }
+
+                if(instance == null){
+                    instance = clazz.getDeclaredConstructor().newInstance();
+                }
 
                 List<Field> fields = Arrays.asList(instance.getClass().getDeclaredFields());
 

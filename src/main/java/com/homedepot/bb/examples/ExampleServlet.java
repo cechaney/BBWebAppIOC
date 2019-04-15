@@ -74,7 +74,7 @@ public class ExampleServlet extends HttpServlet {
         writer.println("    </div>");
 
         writer.println("    <div>");
-        request.getRequestDispatcher("/jsplife.jsp").include(request, response);
+        request.getRequestDispatcher("/lifecycle.jsp").include(request, response);
         writer.println("    </div>");
 
         writer.println("</body>");

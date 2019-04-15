@@ -46,7 +46,7 @@
         <div class="col-12">
             <ul>
                 <li>
-                    <p class="lead">Rod Johnson changed Java Development with one book.  He destroyed the entire industry of J2EE Enterprise Servers</p>
+                    <p class="lead">Rod Johnson disrupted the entire J2EE Enterprise server industry with one book</p>
                 </li>
                 <li>
                     <p class="lead">Spring was a reaction to the complexity of J2EE (Enterprise Java Beans especially)</p>
@@ -58,7 +58,7 @@
                     <p class="lead">It's impossible to be an expert in everything Spring</p>
                 </li>
                 <li>
-                    <p class="lead">Knowing the fundamentals of IOC is key to being a good Java dev today</p>
+                    <p class="lead">Knowing the fundamentals of IOC is key to mastering Spring</p>
                 </li>
             </ul>
             <hr/>

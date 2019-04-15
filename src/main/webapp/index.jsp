@@ -2,76 +2,101 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
-    <head>
+<head>
 
-        <title>Brown Bag Webapp </title>
+    <title>Brown Bag Webapp</title>
 
-        <link href="styles/simple-grid.min.css" rel="stylesheet"/>
+    <link href="styles/simple-grid.min.css" rel="stylesheet"/>
 
-        <style>
-            body {
+    <style>
+        body {
 
-            }
-            #jspIcon{
-                width: 128px;
-                height: 128px;
-            }
-            .jumbotron{
-                color: white;
-                background: rgb(0,0,0);
-                background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(152,152,152,1) 100%);
-                padding-top: 16px;
-            }
-            .jumbotron h2 {
-                color: white
-            }
-        </style>
-    </head>
-    <body>
-        <div class="jumbotron">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 center">
-                        <div class="font-light"><img id="jspIcon" src="images/jsp.png"></div>
-                        <div style="color: white; font-size: 3.5em">Java Server Pages</div>
-                        <h2 class="font-light">JSP is a templating system for Java web applications</h2>
-                    </div>
-                </div>
+        }
+        #jspIcon{
+            width: 128px;
+            height: 128px;
+        }
+        .jumbotron{
+            color: white;
+            background: rgb(0,0,0);
+            background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(152,152,152,1) 100%);
+            padding-top: 16px;
+        }
+        .jumbotron h2 {
+            color: white
+        }
+    </style>
+</head>
+<body>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 center">
+                <div class="font-light"><img id="jspIcon" src="images/jsp.png"></div>
+                <div style="color: white; font-size: 3.5em">Let's talk about</div>
+                <h2 class="font-light">Java Web Apps and IOC</h2>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <ul>
-                        <li>
-                            <p class="lead">Devs used to build powerful apps with JSP. These days there's a perference for "simple" template frameworks like Mustache.</p>
-                        </li>
-                        <li>
-                            <p class="lead">The biggest complaint about JSP was that it encouraged the mixing of code and markup.  Designers couldn't see their design through all of the code snippets.</p>
-                        </li>
-                        <li>
-                            <p class="lead">What's old is new again.  You're probably mixing code and markup together in your React.js app. >:P</p>
-                        </li>
-                        <li>
-                            <p class="lead">Custom JSP tags libraries were popular as well.  The date at the bottom of the page is a Date Format tag.</p>
-                        </li>
-                    </ul>
-                    <div class="col-4 center">
-                        <a href="./example">Servlets</a>
-                    </div>
-                    <div class="col-4 center">
-                        <a href="./mvc/example">MVC</a>
-                    </div>
-                    <div class="col-4 center">
-                        <a href="./history.jsp">Spring History</a>
-                    </div>
-                    <hr/>
-                    <div class="right">
-                        <c:set var="now" value="<%=new java.util.Date()%>"/>
-                        <b>The current date is:</b> <fmt:formatDate value="${now}"/>
-                    </div>
-                </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <li>
+                    <p class="lead">In May 1996 the Java Servlets API standard was proposed</p>
+                </li>
+                <li>
+                    <p class="lead">The Servlets API laid out a standard way for a java class to respond to network (mostly HTTP) requests</p>
+                </li>
+                <li>
+                    <p class="lead">Servlets need an application called a "Servlet Container" to run them.</p>
+                </li>
+                <li>
+                    <p class="lead">Apache Tomcat, Jetty, and Glassfish are examples of containers</p>
+                </li>
+                <li>
+                    <p class="lead">The Spring Boot apps you use depend on the servlet API and Servlet Containers to function</p>
+                </li>
+                <li>
+                    <p class="lead">Servlet Containers use a Pool of Threads to handle incoming requests.  1 request = 1 thread</p>
+                </li>
+                <li>
+                    <p class="lead">Servlet Containers also handle session storage, security, clustering</p>
+                </li>
+                <li>
+                    <p class="lead">Spring Boot apps use an "Embedded" version of a Servlet container that doesn't require you to maintain a copy of the container application</p>
+                </li>
+            </ul>
+            <hr>
+            <div class="col-6 center">
+                <h4>Here's a picture of the most basic structure a Java Web Application can have.</h4>
+                <img src="./images/structure.png"/>
+            </div>
+            <div class="col-6 center">
+                <h4>To run this web application we build that structure into a .war (Web application archive) file and copy it into the "webapps" folder of a copy of Apache Tomcat</h4>
+                <img src="./images/tomcat.png"/>
+            </div>
+            <p class="lead">Modern alternatives to the Servlet API / Spring Boot like Play, Ratpack, and Micronaut do away with Thread Pools and embedded containers. These alternatives are superior in performance to Spring Boot and non JVM alternatives like Node.js</p>
+            <div class="col-3 center">
+                <a href="./jsp.jsp">JSP</a>
+            </div>
+            <div class="col-3 center">
+                <a href="./servlet">Servlets</a>
+            </div>
+            <div class="col-3 center">
+                <a href="./mvc/example">MVC with IOC</a>
+            </div>
+            <div class="col-3 center">
+                <a href="./history.jsp">Spring History</a>
+            </div>
+            <hr/>
+            <div class="right">
+                <c:set var="now" value="<%=new java.util.Date()%>"/>
+                <b>The current date is:</b> <fmt:formatDate value="${now}"/>
             </div>
         </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>
