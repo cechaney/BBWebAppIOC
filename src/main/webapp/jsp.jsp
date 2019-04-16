@@ -4,7 +4,7 @@
 <html>
     <head>
 
-        <title>Brown Bag Webapp</title>
+        <title>Brown Bag #1</title>
 
         <link href="styles/simple-grid.min.css" rel="stylesheet"/>
 
@@ -12,7 +12,7 @@
             body {
 
             }
-            #jspIcon{
+            #icon{
                 width: 128px;
                 height: 128px;
             }
@@ -25,6 +25,9 @@
             .jumbotron h2 {
                 color: white
             }
+            a, u {
+                text-decoration: none;
+            }
         </style>
     </head>
     <body>
@@ -32,7 +35,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 center">
-                        <div class="font-light"><img id="jspIcon" src="images/jsp.png"></div>
+                        <div class="font-light"><img id="icon" src="images/jsp.png"></div>
                         <div style="color: white; font-size: 3.5em">Java Server Pages</div>
                         <h2 class="font-light">JSP is a templating system for Java web applications</h2>
                     </div>
@@ -56,13 +59,19 @@
                             <p class="lead">Custom JSP tags libraries were popular as well.  The date at the bottom of the page is a Date Format tag.</p>
                         </li>
                     </ul>
-                    <div class="col-4 center">
-                        <a href="./example">Servlets</a>
+                    <div class="col-3 center">
+                        <a href="./webapps.jsp">Java Web Apps</a>
                     </div>
-                    <div class="col-4 center">
-                        <a href="./mvc/example">MVC with IOC</a>
+                    <div class="col-2 center">
+                        <a href="./jsp.jsp">JSP</a>
                     </div>
-                    <div class="col-4 center">
+                    <div class="col-2 center">
+                        <a href="./servlet">Servlets</a>
+                    </div>
+                    <div class="col-3 center">
+                        <a href="./mvc/example">IOC | MVC | Templates</a>
+                    </div>
+                    <div class="col-2 center">
                         <a href="./history.jsp">Spring History</a>
                     </div>
                     <hr/>

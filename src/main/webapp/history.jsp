@@ -4,7 +4,7 @@
 <html>
 <head>
 
-    <title>Brown Bag Webapp </title>
+    <title>Brown Bag #1</title>
 
     <link href="styles/simple-grid.min.css" rel="stylesheet"/>
 
@@ -12,7 +12,7 @@
         body {
 
         }
-        #jspIcon{
+        #icon{
             width: 128px;
             height: 128px;
         }
@@ -24,6 +24,9 @@
         }
         .jumbotron h1, h2, h3 {
             color: white
+        }
+        a, u {
+            text-decoration: none;
         }
     </style>
 </head>
@@ -61,6 +64,21 @@
                     <p class="lead">Knowing the fundamentals of IOC is key to mastering Spring</p>
                 </li>
             </ul>
+            <div class="col-3 center">
+                <a href="./webapps.jsp">Java Web Apps</a>
+            </div>
+            <div class="col-2 center">
+                <a href="./jsp.jsp">JSP</a>
+            </div>
+            <div class="col-2 center">
+                <a href="./servlet">Servlets</a>
+            </div>
+            <div class="col-3 center">
+                <a href="./mvc/example">IOC | MVC | Templates</a>
+            </div>
+            <div class="col-2 center">
+                <a href="./history.jsp">Spring History</a>
+            </div>
             <hr/>
         </div>
     </div>

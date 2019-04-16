@@ -1,7 +1,7 @@
 <html>
 <head>
 
-    <title>Brown Bag Webapp </title>
+    <title>Brown Bag #1</title>
 
     <link href="../styles/simple-grid.min.css" rel="stylesheet"/>
 
@@ -9,7 +9,7 @@
         body {
 
         }
-        #jspIcon{
+        #icon{
             width: 128px;
             height: 128px;
         }
@@ -22,6 +22,9 @@
         .jumbotron h1, h2, h3 {
             color: white
         }
+        a, u {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -29,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 center">
-                <div class="font-light"><img id="jspIcon" src="../images/spring.png"/><img id="jspIcon" src="../images/mustache.png"/></div>
+                <div class="font-light"><img id="icon" src="../images/spring.png"/><img id="jspIcon" src="../images/mustache.png"/></div>
                 <div style="color: white; font-size: 3.5em">IOC, MVC, Templates</div>
                 <h2 class="font-light">Modern Java Web apps</h2>
             </div>
@@ -44,14 +47,37 @@
                     <p class="lead">Spring's Application and WebApplication contexts provide the IOC pattern</p>
                 </li>
                 <li>
-                    <p class="lead">Spring MVC's ContextLoaderListener and Dispatcher servlet provide the MVC pattern</p>
+                    <p class="lead">Spring MVC's <b>ContextLoaderListener</b> and <b>Dispatcher servlet</b> provide the MVC pattern</p>
                 </li>
                 <li>
                     <p class="lead">JSP, Mustache, Velocity, etc provide the templates</p>
                 </li>
             </ul>
-            <hr/>
+            <div class="col-6 center">
+                <h4>Spring Application Flow</h4>
+                <img src="../images/boot.png"/>
+            </div>
+            <div class="col-6 center">
+                <h4>Spring MVC Request Flow</h4>
+                <img src="../images/mvc.png" style="width: 400px;"/>
+            </div>
+            <div class="col-3 center">
+                <a href="../webapps.jsp">Java Web Apps</a>
+            </div>
+            <div class="col-2 center">
+                <a href="../jsp.jsp">JSP</a>
+            </div>
+            <div class="col-2 center">
+                <a href="../servlet">Servlets</a>
+            </div>
+            <div class="col-3 center">
+                <a href="../mvc/example">IOC | MVC | Templates</a>
+            </div>
+            <div class="col-2 center">
+                <a href="../history.jsp">Spring History</a>
+            </div>
             <div>
+                <hr/>
                 <c:set var="now" value="<%=new java.util.Date()%>"/>
                 <b>Hi {{firstName}}!</b>
             </div>

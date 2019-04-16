@@ -35,9 +35,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12 center">
-                <div class="font-light"><img id="icon" src="images/bag.png"></div>
-                <div style="color: white; font-size: 3.5em">Brown Bag #1</div>
-                <h2 class="font-light">Java Web Apps | IOC/Spring | MVC/Spring</h2>
+                <div class="font-light"><img id="icon" src="images/jsp.png"></div>
+                <div style="color: white; font-size: 3.5em">Java Web Apps</div>
+                <h2 class="font-light">How does all this stuff work?</h2>
             </div>
         </div>
     </div>
@@ -72,6 +72,15 @@
                 </li>
             </ul>
             <hr>
+            <div class="col-6 center">
+                <h4>Here's a picture of the most basic structure a Java Web Application can have.</h4>
+                <img src="./images/structure.png"/>
+            </div>
+            <div class="col-6 center">
+                <h4>To run this web application we build that structure into a .war (Web application archive) file and copy it into the "webapps" folder of a copy of Apache Tomcat</h4>
+                <img src="./images/tomcat.png"/>
+            </div>
+            <p class="lead">Modern alternatives to the Servlet API / Spring Boot like Play, Ratpack, and Micronaut do away with Thread Pools and embedded containers. These alternatives are superior in performance to Spring Boot and non JVM alternatives like Node.js</p>
             <div class="col-3 center">
                 <a href="./webapps.jsp">Java Web Apps</a>
             </div>
