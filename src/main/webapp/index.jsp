@@ -37,7 +37,7 @@
             <div class="col-12 center">
                 <div class="font-light"><img id="icon" src="images/bag.png"></div>
                 <div style="color: white; font-size: 3.5em">Brown Bag #1</div>
-                <h2 class="font-light">Java Web Apps | IOC/Spring | MVC/Spring</h2>
+                <h2 class="font-light">Java Web Apps * IOC/Spring * MVC/Spring</h2>
             </div>
         </div>
     </div>
@@ -45,33 +45,6 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <ul>
-                <li>
-                    <p class="lead">In May 1996 the Java Servlets API standard was proposed</p>
-                </li>
-                <li>
-                    <p class="lead">The Servlets API laid out a standard way for a java class to respond to network (mostly HTTP) requests</p>
-                </li>
-                <li>
-                    <p class="lead">Servlets need an application called a "Servlet Container" to run them.</p>
-                </li>
-                <li>
-                    <p class="lead">Apache Tomcat, Jetty, and Glassfish are examples of containers</p>
-                </li>
-                <li>
-                    <p class="lead">The Spring Boot apps you use depend on the servlet API and Servlet Containers to function</p>
-                </li>
-                <li>
-                    <p class="lead">Servlet Containers use a Pool of Threads to handle incoming requests.  1 request = 1 thread</p>
-                </li>
-                <li>
-                    <p class="lead">Servlet Containers also handle session storage, security, clustering</p>
-                </li>
-                <li>
-                    <p class="lead">Spring Boot apps use an "Embedded" version of a Servlet container that doesn't require you to maintain a copy of the container application</p>
-                </li>
-            </ul>
-            <hr>
             <div class="col-3 center">
                 <a href="./webapps.jsp">Java Web Apps</a>
             </div>
