@@ -7,28 +7,8 @@
         <title>Brown Bag #1</title>
 
         <link href="styles/simple-grid.min.css" rel="stylesheet"/>
+        <link href="styles/style.css" rel="stylesheet"/>
 
-        <style>
-            body {
-
-            }
-            #icon{
-                width: 128px;
-                height: 128px;
-            }
-            .jumbotron{
-                color: white;
-                background: rgb(0,0,0);
-                background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(152,152,152,1) 100%);
-                padding-top: 16px;
-            }
-            .jumbotron h2 {
-                color: white
-            }
-            a, u {
-                text-decoration: none;
-            }
-        </style>
     </head>
     <body>
         <div class="jumbotron">
