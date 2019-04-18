@@ -37,7 +37,7 @@
             <div class="col-12 center">
                 <div class="font-light"><img id="icon" src="images/bag.png"></div>
                 <div style="color: white; font-size: 3.5em">Brown Bag #1</div>
-                <h2 class="font-light">Java Web Apps * IOC/Spring * MVC/Spring</h2>
+                <h2 class="font-light">Spring, Java Web Apps, & Dependency Injection</h2>
             </div>
         </div>
     </div>
@@ -45,6 +45,9 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <div class="col-2 center">
+                <a href="./history.jsp">Spring History</a>
+            </div>
             <div class="col-3 center">
                 <a href="./webapps.jsp">Java Web Apps</a>
             </div>
@@ -55,10 +58,7 @@
                 <a href="./servlet">Servlets</a>
             </div>
             <div class="col-3 center">
-                <a href="./mvc/example">IOC | MVC | Templates</a>
-            </div>
-            <div class="col-2 center">
-                <a href="./history.jsp">Spring History</a>
+                <a href="./mvc/example">DI | MVC | Templates</a>
             </div>
             <hr/>
             <div class="right">

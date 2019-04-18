@@ -28,6 +28,9 @@
         a, u {
             text-decoration: none;
         }
+        p a {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -80,7 +83,10 @@
                 <h4>To run this web application we build that structure into a .war (Web application archive) file and copy it into the "webapps" folder of a copy of Apache Tomcat</h4>
                 <img src="./images/tomcat.png"/>
             </div>
-            <p class="lead">Modern alternatives to the Servlet API / Spring Boot like Play, Ratpack, and Micronaut do away with Thread Pools and embedded containers. These alternatives are superior in performance to Spring Boot and non JVM alternatives like Node.js</p>
+            <p class="lead">Modern alternatives to Spring Boot (which relies on the Servlet API) like <a href="https://www.playframework.com/">Play</a>, <a href="https://ratpack.io/">Ratpack</a>, and <a href="https://micronaut.io/">Micronaut</a> do away with Thread Pools and embedded containers. These alternatives are superior in performance to Spring Boot and non JVM alternatives like Node.js</p>
+            <div class="col-2 center">
+                <a href="./history.jsp">Spring History</a>
+            </div>
             <div class="col-3 center">
                 <a href="./webapps.jsp">Java Web Apps</a>
             </div>
@@ -91,10 +97,7 @@
                 <a href="./servlet">Servlets</a>
             </div>
             <div class="col-3 center">
-                <a href="./mvc/example">IOC | MVC | Templates</a>
-            </div>
-            <div class="col-2 center">
-                <a href="./history.jsp">Spring History</a>
+                <a href="./mvc/example">DI | MVC | Templates</a>
             </div>
             <hr/>
             <div class="right">

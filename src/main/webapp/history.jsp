@@ -64,6 +64,9 @@
                     <p class="lead">Knowing the fundamentals of IOC is key to mastering Spring</p>
                 </li>
             </ul>
+            <div class="col-2 center">
+                <a href="./history.jsp">Spring History</a>
+            </div>
             <div class="col-3 center">
                 <a href="./webapps.jsp">Java Web Apps</a>
             </div>
@@ -74,10 +77,7 @@
                 <a href="./servlet">Servlets</a>
             </div>
             <div class="col-3 center">
-                <a href="./mvc/example">IOC | MVC | Templates</a>
-            </div>
-            <div class="col-2 center">
-                <a href="./history.jsp">Spring History</a>
+                <a href="./mvc/example">DI | MVC | Templates</a>
             </div>
             <hr/>
         </div>

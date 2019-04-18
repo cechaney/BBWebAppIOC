@@ -59,6 +59,9 @@
                             <p class="lead">Custom JSP tags libraries were popular as well.  The date at the bottom of the page is a Date Format tag.</p>
                         </li>
                     </ul>
+                    <div class="col-2 center">
+                        <a href="./history.jsp">Spring History</a>
+                    </div>
                     <div class="col-3 center">
                         <a href="./webapps.jsp">Java Web Apps</a>
                     </div>
@@ -69,10 +72,7 @@
                         <a href="./servlet">Servlets</a>
                     </div>
                     <div class="col-3 center">
-                        <a href="./mvc/example">IOC | MVC | Templates</a>
-                    </div>
-                    <div class="col-2 center">
-                        <a href="./history.jsp">Spring History</a>
+                        <a href="./mvc/example">DI | MVC | Templates</a>
                     </div>
                     <hr/>
                     <div class="right">
