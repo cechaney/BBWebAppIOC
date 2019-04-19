@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-12">
             <div>
-                <h1>"Each generation learns how to live with a level of technology that a previous one created."</h1>
+                <h3>"Each generation learns how to live with a level of technology that a previous one created."</h3>
                 -Walter Wriston, Chairman Citicorp 1979
             </div>
             </br>
