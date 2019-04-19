@@ -25,6 +25,11 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <div>
+                <h1>"Each generation learns how to live with a level of technology that a previous one created"</h1>
+                -Walter Wriston, Chairman Citicorp 1979
+            </div>
+            </br>
             <div class="col-2 center">
                 <a href="./history.jsp">Spring History</a>
             </div>
