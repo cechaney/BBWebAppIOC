@@ -1,15 +1,22 @@
 package com.homedepot.bb.examples;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebServlet(
+  name = "ExampleServlet",
+  urlPatterns = {"/servlet"}
+)
 public class ExampleServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  private static final long serialVersionUID = 1L;
+
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 

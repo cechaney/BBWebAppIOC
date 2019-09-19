@@ -3,7 +3,6 @@ package com.homedepot.bb;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
-import com.github.mustachejava.codes.DefaultMustache;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
