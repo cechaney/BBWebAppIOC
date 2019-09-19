@@ -24,6 +24,7 @@ hs_err_pid*
 
 #built artifacts
 /target
+tomcat.8080
 
 # ide files
 /.idea

@@ -84,6 +84,8 @@ public class ExampleServlet extends HttpServlet {
         request.getRequestDispatcher("/lifecycle.jsp").include(request, response);
         writer.println("    </div>");
 
+        request.getRequestDispatcher("/links.jsp").include(request, response);
+
         writer.println("</body>");
         writer.println("</html");
 
